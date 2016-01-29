@@ -1,0 +1,23 @@
+@startuml
+
+class Cell {
+  + attr
+}
+
+class Map {
+  + [[cell]]
+  + getCell(x, y)
+  + setCell(x, y)
+}
+
+class mob {
+  isMovable (TitleType)
+  move(vec)
+  - coordinate
+  + getCoordinate ()
+  + getArround(map)
+}
+
+Cell <- Map
+
+@enduml

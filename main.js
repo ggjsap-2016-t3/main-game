@@ -3,91 +3,88 @@ enchant();
 var CELL_LENGTH = 32;
 
 window.onload = function() {
-  var core = new Core(350, 320);
-  core.fps = 30;
-  core.preload("chara1.png");
-  core.preload("map0.png");
+    var core = new Core(350, 320);
+    core.fps = 30;
+    core.preload("chara1.png");
+    core.preload("map0.png");
 
-  core.onload = function() {
-    var bear = new Sprite(32, 32);
-    bear.image = core.assets["chara1.png"];
-    bear.x = CELL_LENGTH;
-    bear.y = CELL_LENGTH;
+    core.onload = function() {
+        var bear = new Sprite(32, 32);
+        bear.image = core.assets["chara1.png"];
+        bear.x = CELL_LENGTH;
+        bear.y = CELL_LENGTH;
 
-    var left = 20;
-    var leftLabel = new Label(left);
-    leftLabel.x = 330;
-    leftLabel.y = 10;
+        var left = 20;
+        var leftLabel = new Label(left);
+        leftLabel.x = 330;
+        leftLabel.y = 10;
 
-    bear.addEventListener('enterframe', function() {
-      this.frame = this.age % 3;
+        bear.addEventListener('enterframe', function() {
+            this.frame = this.age % 3;
 
-      if (this.frame % 30 == 0) {
-        if (core.input.right && !map.hitTest(this.x + CELL_LENGTH, this.y)) {
-          this.x += CELL_LENGTH;
-          left -= 1;
-        }
-        if (core.input.left && !map.hitTest(this.x - CELL_LENGTH, this.y)) {
-          this.x -= CELL_LENGTH;
-          left -= 1;
-        }
-        if (core.input.down && !map.hitTest(this.x, this.y + CELL_LENGTH)) {
-          this.y += CELL_LENGTH;
-          left -= 1;
-        }
-        if (core.input.up && !map.hitTest(this.x, this.y - CELL_LENGTH)) {
-          this.y -= CELL_LENGTH;
-          left -= 1;
-        }
-      }
-      leftLabel.text = left;
+            if (this.frame % 30 == 0) {
+                if (core.input.right && !map.hitTest(this.x + CELL_LENGTH, this.y)) {
+                    this.x += CELL_LENGTH;
+                    left -= 1;
+                }
+                if (core.input.left && !map.hitTest(this.x - CELL_LENGTH, this.y)) {
+                    this.x -= CELL_LENGTH;
+                    left -= 1;
+                }
+                if (core.input.down && !map.hitTest(this.x, this.y + CELL_LENGTH)) {
+                    this.y += CELL_LENGTH;
+                    left -= 1;
+                }
+                if (core.input.up && !map.hitTest(this.x, this.y - CELL_LENGTH)) {
+                    this.y -= CELL_LENGTH;
+                    left -= 1;
+                }
+            }
+            leftLabel.text = left;
+            if (map.checkTile(this.x, this.y) == 14) {
+                leftLabel.text = "成";
+                core.stop();
+            }
+            if (left == 0) {
+                leftLabel.text = "死";
+                core.stop();
+            }
+        });
 
-      if (map.checkTile(this.x, this.y) == 14) {
-        leftLabel.text = "成";
-        sendRank("user", 1, left);
-        core.stop();
-      }
-      if (left == 0) {
-        leftLabel.text = "死";
-        core.stop();
-      }
-    });
-
-
-    var map = new Map(CELL_LENGTH, CELL_LENGTH); // Map(セルの高さ, セルの幅)
-    map.image = core.assets['map0.png'];
-    map.loadData(
-      [
-        [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
-        [7, 13, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [7, 0, 0, 0, 0, 0, 0, 0, 14, 7],
-        [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
-      ]
-    );
-    map.collisionData =
-      [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      ]
-    core.rootScene.addChild(map);
-    core.rootScene.addChild(leftLabel);
-    core.rootScene.addChild(bear);
-  };
-  core.start();
+        var map = new Map(CELL_LENGTH, CELL_LENGTH); // Map(セルの高さ, セルの幅)
+        map.image = core.assets['map0.png'];
+        map.loadData(
+            [
+                [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                [7, 13, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
+                [7, 0, 0, 0, 0, 0, 0, 0, 14, 7],
+                [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+            ]
+        );
+        map.collisionData =
+            [
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            ]
+        core.rootScene.addChild(map);
+        core.rootScene.addChild(leftLabel);
+        core.rootScene.addChild(bear);
+    };
+    core.start();
 };
 
 function sendRank(uname, stage, left){

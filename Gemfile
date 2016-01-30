@@ -5,6 +5,7 @@ gem 'sinatra-contrib'
 gem 'thin'
 gem 'slim'
 gem 'unicorn'
+gem 'pg'
 gem 'sequel'
 
 group :development do

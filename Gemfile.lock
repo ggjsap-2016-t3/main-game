@@ -6,6 +6,7 @@ GEM
     eventmachine (1.0.9.1)
     kgio (2.10.0)
     multi_json (1.11.2)
+    pg (0.18.4)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -44,6 +45,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pg
   sequel
   shotgun
   sinatra

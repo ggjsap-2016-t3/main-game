@@ -111,7 +111,7 @@ function sendRank(uname, stage, left){
         var url = "/";
         xhr.open("POST", url);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(jsonData);
+        xhr.send("result="+jsonData);
         return true;
     }else{
         Console.log("JSON.stringify() is not supported.");

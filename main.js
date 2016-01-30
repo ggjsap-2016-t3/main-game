@@ -221,7 +221,7 @@ window.onload = function() {
             });
 
             // 移動経路探索
-            ps.search([1, 1], CELL_LENGTH * CELL_LENGTH);
+            ps.search([1, 1], 15 * 15);
 
             // 結果インスタンス取得
             var result = ps.getResult();
@@ -232,7 +232,7 @@ window.onload = function() {
             // result.getStepIndexes(終点座標); // 終点に到達できるなら経路の座標マップを返す
             // return result.hasPathData(終点座標);
             // console.log(result.hasData);
-            return result.hasPath([CELL_LENGTH - 1, CELL_LENGTH - 1]);
+            return result.hasPath([15 - 2, 15 - 2]);
         };
         console.log(getNumberOfSteps(map));
 

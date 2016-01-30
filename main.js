@@ -60,7 +60,7 @@ window.onload = function() {
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
         rootSearch(map);
-        // var ui = new UI(core, robo);
+        var ui = new UI(core, robo);
     };
     core.start();
 };

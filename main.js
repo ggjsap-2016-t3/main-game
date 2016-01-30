@@ -34,15 +34,17 @@ window.onload = function() {
 
         var map = new Map(CELL_LENGTH, CELL_LENGTH); // Map(セルの高さ, セルの幅)
         map.image = core.assets['./resources/map-tile.png'];
-        var maze = mazeGenerator(15,15);
-        maze[1][1] = 2;
-        maze[13][13] = 3;
-        map.loadData(maze);
+        do{
+            var maze = mazeGenerator(15,15);
+            maze[1][1] = 2;
+            maze[13][13] = 3;
+            map.loadData(maze);
 
-        var collision = $.extend(true, {}, maze);
-        collision[1][1] = 0;
-        collision[13][13] = 0;
-        map.collisionData = collision;
+            var collision = $.extend(true, {}, maze);
+            collision[1][1] = 0;
+            collision[13][13] = 0;
+            map.collisionData = collision;
+        }while(!rootSearch(map));
 
         core.rootScene.addChild(map);
 
@@ -52,38 +54,7 @@ window.onload = function() {
         var item2 = new Item(2, core, map, robo);
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
-
-        var getNumberOfSteps = function(map) {
-            // 二次元配列で表現されたあなたのゲームのマップデータ
-            var yourSquares = map.collisionData;
-
-            // インスタンス生成
-            var ps = new PathSearcher();
-
-            // あなたのマップデータを取り込み
-            ps.load(yourSquares, function(collision){
-                if (collision != 1) {
-                    return false; // falseを返すと進入不可として認識される
-                };
-                return 1;
-            });
-
-            // 移動経路探索
-            ps.search([1, 1], 15 * 15);
-
-            // 結果インスタンス取得
-            var result = ps.getResult();
-
-            // 結果インスタンスを操作してデータを取得
-            // result.hasPathData(終点座標); // 終点に到達できるかを判定する
-            // result.getPathData(終点座標); // 終点に到達できるならその情報を返す
-            // result.getStepIndexes(終点座標); // 終点に到達できるなら経路の座標マップを返す
-            // return result.hasPathData(終点座標);
-            // console.log(result.hasData);
-            return result.hasPath([15 - 2, 15 - 2]);
-        };
-        console.log(getNumberOfSteps(map));
-
+        rootSearch(map);
         // var ui = new UI(core, robo);
     };
     core.start();

@@ -54,7 +54,7 @@ var Robo = Class.create({
                 gameFinishScene.addChild(finishMessage);
                 core_ref.pushScene(gameFinishScene);
                 var uname = document.getElementById("uname");
-                sendRank(uname, 1, this.left);
+                sendRank(uname, this.left);
                 core_ref.stop();
             }
         });

@@ -53,6 +53,10 @@ var Robo = Class.create({
                 gameClearSprite.y = CELL_LENGTH*6;
                 gameClearSprite.frame = 1;
                 gameFinishScene.addChild(gameClearSprite);
+
+                core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
+                core_ref.assets["./resources/ggj16_ending.ogg"].play();
+
                 core_ref.pushScene(gameFinishScene);
                 var uname = document.getElementById("uname");
                 sendRank(uname, this.left);

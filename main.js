@@ -5,21 +5,25 @@ var CELL_LENGTH = 32;
 window.onload = function() {
     var core = new Core(350, 320);
     core.fps = 30;
-    core.preload("chara1.png");
-    core.preload("map0.png");
+    core.preload("./resources/robo.png");
+    core.preload("./resources/map-tile.png");
+    core.preload("./resources/number.png");
+    core.preload("./resources/battery1.png");
+    core.preload("./resources/battery2.png");
+    core.preload("./resources/fog.png");
 
     core.onload = function() {
-        var bear = new Sprite(32, 32);
-        bear.image = core.assets["chara1.png"];
-        bear.x = CELL_LENGTH;
-        bear.y = CELL_LENGTH;
+        var robo = new Sprite(32, 32);
+        robo.image = core.assets["./resources/robo.png"];
+        robo.x = CELL_LENGTH;
+        robo.y = CELL_LENGTH;
 
         var left = 20;
         var leftLabel = new Label(left);
         leftLabel.x = 330;
         leftLabel.y = 10;
 
-        bear.addEventListener('enterframe', function() {
+        robo.addEventListener('enterframe', function() {
             this.frame = this.age % 3;
 
             if (this.frame % 30 == 0) {
@@ -41,7 +45,7 @@ window.onload = function() {
                 }
             }
             leftLabel.text = left;
-            if (map.checkTile(this.x, this.y) == 14) {
+            if (map.checkTile(this.x, this.y) == 3) {
                 leftLabel.text = "成";
                 core.stop();
             }
@@ -52,19 +56,19 @@ window.onload = function() {
         });
 
         var map = new Map(CELL_LENGTH, CELL_LENGTH); // Map(セルの高さ, セルの幅)
-        map.image = core.assets['map0.png'];
+        map.image = core.assets['./resources/map-tile.png'];
         map.loadData(
             [
-                [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
-                [7, 13, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 0, 7],
-                [7, 0, 0, 0, 0, 0, 0, 0, 14, 7],
-                [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 2, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 3, 1],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             ]
         );
         map.collisionData =
@@ -82,7 +86,7 @@ window.onload = function() {
             ]
         core.rootScene.addChild(map);
         core.rootScene.addChild(leftLabel);
-        core.rootScene.addChild(bear);
+        core.rootScene.addChild(robo);
     };
     core.start();
 };

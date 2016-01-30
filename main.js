@@ -46,7 +46,7 @@ window.onload = function() {
 
         core.rootScene.addChild(map);
 
-        var robo = new Robo(20, CELL_LENGTH, CELL_LENGTH, core, map);
+        var robo = new Robo(left, CELL_LENGTH, CELL_LENGTH, core, map);
 
         var item1 = new Item(1, core, map, robo);
         var item2 = new Item(2, core, map, robo);

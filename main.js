@@ -9,6 +9,31 @@ window.onload = function() {
   core.preload("map0.png");
 
   core.onload = function() {
+    var mob = Class.create(Sprite, {
+
+      move: function(vec) {
+        this.x += vec[0];
+        this.y += vec[1];
+      }
+
+      getAround: function(map) {
+        var [x, y] = this.getCoordinate();
+        var around_cells = [];
+        if (this.y > 0) {
+          around_cells.push(map[x][y - 1]);
+        }
+        if (this.x > 0) {
+          around_cells.push(maps[x - 1][y]);
+        }
+        if (this.x < maps[0].length() - 1) {
+          around_cells.push(maps[x + 1][y]);
+        }
+        if (this.y < maps.length() - 1) {
+          around_cells.push(maps[x][y + 1]);
+        }
+      }
+    });
+
     var bear = new Sprite(32, 32);
     bear.image = core.assets["chara1.png"];
     bear.x = CELL_LENGTH;

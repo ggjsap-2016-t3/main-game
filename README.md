@@ -31,10 +31,12 @@ git clone git@github.com:ggjsap-2016-t3/main-game.git
 public/以下にゲームに必要なファイル（main.jsやindex.htmlなど）が入っているので、それをブラウザで開いて開発を進めてください。
 
 ## サーバー作る人
+PostgreSQL環境必須。
 
 ```
 bundle install
 cp config/config.yml.example config/config.yml
+# ↑を編集
 shotgun
 open http://localhost:9393/
 ```

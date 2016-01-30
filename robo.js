@@ -59,7 +59,7 @@ var Robo = Class.create({
 
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/ggj16_ending.ogg"].play();
-
+                core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.pushScene(gameFinishScene);
                 var uname = document.getElementById("uname").value;
                 sendRank(uname, this.left);

@@ -192,6 +192,8 @@ function sendRank(uname, stage, left){
     if (window.JSON){
         if (uname===undefined){
             uname = "test";
+        }else if (uname==""){
+            uname = "test";
         }
         if (stage===undefined){
             stage = 1;

@@ -11,6 +11,8 @@ window.onload = function() {
     core.preload("./resources/batteryfont.png");
     core.preload("./resources/gameclear.png");
     core.preload("./resources/ggj16_ending.ogg");
+    core.preload("./resources/getitem.mp3");
+    core.preload("./resources/gameover.mp3");
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){

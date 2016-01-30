@@ -73,31 +73,27 @@ var Robo = Class.create({
                     this.left -= 1;
                 }
             }
-            // leftLabel.text = left;
-            // if (map.checkTile(this.x, this.y) == 3) {
-            //     // leftLabel.text = "成";
-            //     core.stop();
-            // }
 
             var gameFinishScene = new Scene();
-            gameFinishScene.backgroundColor = 'gray';
-            var finishMessage = new Label();
             var gameClearSprite = new Sprite(160, 128);
+            var gameOverSprite = new Sprite(160, 128);
             gameClearSprite.image = core_ref.assets["./resources/gameclear.png"];
+            gameOverSprite.image = core_ref.assets["./resources/gameover.png"];
 
             if (this.left == 0) {
+                gameFinishScene.backgroundColor = 'black';
+                gameOverSprite.x = CELL_LENGTH*5.5;
+                gameOverSprite.y = CELL_LENGTH*6;
+                gameFinishScene.addChild(gameOverSprite);
+                
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/gameover.mp3"].play();
-                finishMessage.text = "Game Over...";
-                finishMessage.x = 216;
-                finishMessage.y = 256;
-                finishMessage.color = 'red';
-                gameFinishScene.addChild(finishMessage);
                 core_ref.pushScene(gameFinishScene);
                 core_ref.stop();
             }
 
             if (map_ref.checkTile(this.x, this.y) == 3) {
+                gameFinishScene.backgroundColor = 'gray';
                 gameClearSprite.x = CELL_LENGTH*5.5;
                 gameClearSprite.y = CELL_LENGTH*6;
                 gameClearSprite.frame = 1;

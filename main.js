@@ -10,6 +10,7 @@ window.onload = function() {
     core.preload("./resources/ggj16_ritual.ogg");
     core.preload("./resources/batteryfont.png");
     core.preload("./resources/gameclear.png");
+    core.preload("./resources/ggj16_ending.ogg");
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){

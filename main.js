@@ -13,7 +13,7 @@ var Item = Class.create({
         this.sprite.addEventListener("enterframe", function(){
             if(this.frame == 0){
                 if(this.intersect(robo_ref.sprite)){
-                    this.frame += 1;
+                    this.frame -= 1;
                     console.log(robo_ref.sprite.left);
                     robo_ref.sprite.left += level*4;
 
@@ -116,6 +116,46 @@ var UI = Class.create({
            this.x = -512+CELL_LENGTH/2 + robo_ref.sprite.x;
            this.y = -512+CELL_LENGTH/2 + robo_ref.sprite.y;
         });
+
+
+        this.digitSprites = [new Sprite(16, 16), new Sprite(16, 16)];
+        this.digitSprites[0].image = core_ref.assets["./resources/number.png"];
+        this.digitSprites[1].image = core_ref.assets["./resources/number.png"];
+
+        this.digitSprites[0].x = CELL_LENGTH*5.5;
+        this.digitSprites[0].y = CELL_LENGTH;
+
+        this.digitSprites[1].x = CELL_LENGTH*5.5+CELL_LENGTH/2;
+        this.digitSprites[1].y = CELL_LENGTH;
+
+        // for (var i=0; i < this.digitSprites; ++i) {
+        //     this.digitSprites[i].addEventListener('enterframe', function() {
+        //         // var digits = [0, 0];
+        //         // digits[0] = robo_ref.left()/10;
+        //         // digits[1] = robo_ref.left()%10;
+        //         // this.frame = digits[i];
+        //         this.frame = 2;
+        //     });
+        // }
+
+        this.digitSprites[0].addEventListener('enterframe', function() {
+            digit = robo_ref.left()/10;
+            this.frame = digit;
+        });
+
+        this.digitSprites[1].addEventListener('enterframe', function() {
+            digit = robo_ref.left()%10;
+            this.frame = digit;
+        });
+        core_ref.rootScene.addChild(this.digitSprites[0]);
+        core_ref.rootScene.addChild(this.digitSprites[1]);
+
+        this.batteryFontSprite = new Sprite(56*2, 8*2);
+        this.batteryFontSprite.image = core_ref.assets["./resources/batteryfont.png"];
+        this.batteryFontSprite.x = CELL_LENGTH;
+        this.batteryFontSprite.y = CELL_LENGTH;
+        core_ref.rootScene.addChild(this.batteryFontSprite);
+
     }
 })
 
@@ -129,6 +169,7 @@ window.onload = function() {
     core.preload("./resources/battery2.png");
     core.preload("./resources/fog.png");
     core.preload("./resources/ggj16_ritual.ogg");
+    core.preload("./resources/batteryfont.png");
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){
@@ -165,7 +206,6 @@ window.onload = function() {
         map.collisionData = collision;
 
         core.rootScene.addChild(map);
-        core.rootScene.addChild(leftLabel);
 
         var robo = new Robo(20, CELL_LENGTH, CELL_LENGTH, core, map);
 

@@ -1,5 +1,3 @@
-enchant();
-
 var CELL_LENGTH = 32;
 
 var Item = Class.create({

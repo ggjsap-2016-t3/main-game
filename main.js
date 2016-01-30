@@ -47,6 +47,8 @@ window.onload = function() {
             leftLabel.text = left;
             if (map.checkTile(this.x, this.y) == 3) {
                 leftLabel.text = "成";
+                var uname = document.getElementById("uname");
+                sendRank(uname, 1, left);
                 core.stop();
             }
             if (left == 0) {

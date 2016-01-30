@@ -41,6 +41,7 @@ var Robo = Class.create({
 
             if (this.left == 0) {
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
+                core_ref.assets["./resources/gameover.mp3"].play();
                 finishMessage.text = "Game Over...";
                 finishMessage.x = 216;
                 finishMessage.y = 256;

@@ -10,9 +10,9 @@ var Item = Class.create({
             if(this.frame == 0){
                 if(this.intersect(robo_ref.sprite)){
                     this.frame -= 1;
+                    core_ref.assets['./resources/getitem.mp3'].play();
                     console.log(robo_ref.sprite.left);
                     robo_ref.sprite.left += level*4;
-
                     console.log(robo_ref.sprite.left);
                 }
             }

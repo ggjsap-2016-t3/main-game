@@ -44,6 +44,7 @@ window.onload = function() {
 
       if (map.checkTile(this.x, this.y) == 14) {
         leftLabel.text = "成";
+        sendRank("user", 1, left);
         core.stop();
       }
       if (left == 0) {
@@ -88,3 +89,32 @@ window.onload = function() {
   };
   core.start();
 };
+
+function sendRank(uname, stage, left){
+    if (window.JSON){
+        if (uname===undefined){
+            uname = "test";
+        }
+        if (stage===undefined){
+            stage = 1;
+        }
+        if (left===undefined){
+            left = 0;
+        }
+        var data = {
+            user : uname,
+            stage : stage,
+            left : left
+        };
+        var jsonData = JSON.stringify(data);
+        var xhr = new XMLHttpRequest();
+        var url = "/";
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(jsonData);
+        return true;
+    }else{
+        Console.log("JSON.stringify() is not supported.");
+        return false;
+    }
+}

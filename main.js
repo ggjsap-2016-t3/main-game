@@ -147,7 +147,7 @@ window.onload = function() {
         // robo.x = CELL_LENGTH;
         // robo.y = CELL_LENGTH;
 
-        var left = 20;
+        var left = 80;
         var leftLabel = new Label(left);
         leftLabel.x = 330;
         leftLabel.y = 10;
@@ -205,7 +205,38 @@ window.onload = function() {
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
 
-        var ui = new UI(core, robo);
+        var getNumberOfSteps = function(map) {
+            // 二次元配列で表現されたあなたのゲームのマップデータ
+            var yourSquares = map.collisionData;
+
+            // インスタンス生成
+            var ps = new PathSearcher();
+
+            // あなたのマップデータを取り込み
+            ps.load(yourSquares, function(collision){
+                if (collision != 1) {
+                    return false; // falseを返すと進入不可として認識される
+                };
+                return 1;
+            });
+
+            // 移動経路探索
+            ps.search([1, 1], CELL_LENGTH * CELL_LENGTH);
+
+            // 結果インスタンス取得
+            var result = ps.getResult();
+
+            // 結果インスタンスを操作してデータを取得
+            // result.hasPathData(終点座標); // 終点に到達できるかを判定する
+            // result.getPathData(終点座標); // 終点に到達できるならその情報を返す
+            // result.getStepIndexes(終点座標); // 終点に到達できるなら経路の座標マップを返す
+            // return result.hasPathData(終点座標);
+            // console.log(result.hasData);
+            return result.hasPath([CELL_LENGTH - 1, CELL_LENGTH - 1]);
+        };
+        console.log(getNumberOfSteps(map));
+
+        // var ui = new UI(core, robo);
     };
     core.start();
 };

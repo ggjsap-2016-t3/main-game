@@ -110,3 +110,24 @@ function mazeGenerator(h, w){
 
     return maze;
 }
+
+function rootSearch(map){
+    var squares = map.collisionData;
+    var ps = new PathSearcher();
+    ps.load(squares, function(sq, idx){
+        if (sq==1){
+            return false;
+        };
+        return 1;
+    }, {maxXIndex:14, maxYIndex:14});
+
+    ps.search([1,1], null, [13,13]);
+    var result = ps.getResult();
+    var endpoints = result.getAllEndPoints();
+    var end = [13,13];
+    if (endpoints[endpoints.length-1][0]==13 && endpoints[endpoints.length-1][1]==13){
+        return true;
+    }else{
+        return false;
+    }
+}

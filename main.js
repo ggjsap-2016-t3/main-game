@@ -31,22 +31,24 @@ window.onload = function() {
         // robo.x = CELL_LENGTH;
         // robo.y = CELL_LENGTH;
 
-        var left = 20;
+        var left = 80;
         var leftLabel = new Label(left);
         leftLabel.x = 330;
         leftLabel.y = 10;
 
         var map = new Map(CELL_LENGTH, CELL_LENGTH); // Map(セルの高さ, セルの幅)
         map.image = core.assets['./resources/map-tile.png'];
-        var maze = mazeGenerator(15,15);
-        maze[1][1] = 2;
-        maze[13][13] = 3;
-        map.loadData(maze);
+        do{
+            var maze = mazeGenerator(15,15);
+            maze[1][1] = 2;
+            maze[13][13] = 3;
+            map.loadData(maze);
 
-        var collision = $.extend(true, {}, maze);
-        collision[1][1] = 0;
-        collision[13][13] = 0;
-        map.collisionData = collision;
+            var collision = $.extend(true, {}, maze);
+            collision[1][1] = 0;
+            collision[13][13] = 0;
+            map.collisionData = collision;
+        }while(!rootSearch(map));
 
         core.rootScene.addChild(map);
 
@@ -56,8 +58,8 @@ window.onload = function() {
         var item2 = new Item(2, core, map, robo);
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
-
-        var ui = new UI(core, robo);
+        rootSearch(map);
+        // var ui = new UI(core, robo);
     };
     core.start();
 };

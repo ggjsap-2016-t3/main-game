@@ -56,8 +56,8 @@ var Robo = Class.create({
                 gameFinishScene.addChild(finishMessage);
                 core_ref.pushScene(gameFinishScene);
                 var uname = document.getElementById("uname");
-                sendRank(uname, 1, left);
-                core.stop();
+                sendRank(uname, 1, this.left);
+                core_ref.stop();
             }
         });
         core_ref.rootScene.addChild(this.sprite);

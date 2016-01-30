@@ -9,23 +9,21 @@ var Robo = Class.create({
         this.sprite.addEventListener('enterframe', function() {
             this.frame = this.age % 3;
 
-            if (this.frame % 30 == 0) {
-                if (core_ref.input.right && !map_ref.hitTest(this.x + CELL_LENGTH, this.y)) {
-                    this.x += CELL_LENGTH;
-                    this.left -= 1;
-                }
-                if (core_ref.input.left && !map_ref.hitTest(this.x - CELL_LENGTH, this.y)) {
-                    this.x -= CELL_LENGTH;
-                    this.left -= 1;
-                }
-                if (core_ref.input.down && !map_ref.hitTest(this.x, this.y + CELL_LENGTH)) {
-                    this.y += CELL_LENGTH;
-                    this.left -= 1;
-                }
-                if (core_ref.input.up && !map_ref.hitTest(this.x, this.y - CELL_LENGTH)) {
-                    this.y -= CELL_LENGTH;
-                    this.left -= 1;
-                }
+            if (core_ref.input.right && !map_ref.hitTest(this.x + CELL_LENGTH, this.y)) {
+                this.x += CELL_LENGTH;
+                this.left -= 1;
+            }
+            if (core_ref.input.left && !map_ref.hitTest(this.x - CELL_LENGTH, this.y)) {
+                this.x -= CELL_LENGTH;
+                this.left -= 1;
+            }
+            if (core_ref.input.down && !map_ref.hitTest(this.x, this.y + CELL_LENGTH)) {
+                this.y += CELL_LENGTH;
+                this.left -= 1;
+            }
+            if (core_ref.input.up && !map_ref.hitTest(this.x, this.y - CELL_LENGTH)) {
+                this.y -= CELL_LENGTH;
+                this.left -= 1;
             }
             // leftLabel.text = left;
             // if (map.checkTile(this.x, this.y) == 3) {

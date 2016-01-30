@@ -64,15 +64,37 @@ var Robo = Class.create({
                     this.left -= 1;
                 }
             }
-
             // leftLabel.text = left;
             // if (map.checkTile(this.x, this.y) == 3) {
             //     // leftLabel.text = "成";
             //     core.stop();
             // }
+
+            var gameFinishScene = new Scene();
+            gameFinishScene.backgroundColor = 'black';
+            var finishMessage = new Label();
+
             if (this.left == 0) {
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
+                finishMessage.text = "Game Over...";
+                finishMessage.x = 216;
+                finishMessage.y = 256;
+                finishMessage.color = 'red';
+                gameFinishScene.addChild(finishMessage);
+                core_ref.pushScene(gameFinishScene);
                 core_ref.stop();
+            }
+
+            if (map_ref.checkTile(this.x, this.y) == 3) {
+                finishMessage.text = "Game Clear!!";
+                finishMessage.x = 216;
+                finishMessage.y = 256;
+                finishMessage.color = 'red';
+                gameFinishScene.addChild(finishMessage);
+                core_ref.pushScene(gameFinishScene);
+                var uname = document.getElementById("uname");
+                sendRank(uname, 1, left);
+                core.stop();
             }
         });
         core_ref.rootScene.addChild(this.sprite);

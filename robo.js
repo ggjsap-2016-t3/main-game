@@ -32,26 +32,27 @@ var Robo = Class.create({
             // }
 
             var gameFinishScene = new Scene();
-            gameFinishScene.backgroundColor = 'black';
-            var finishMessage = new Label();
+            gameFinishScene.backgroundColor = 'gray';
+            // var finishMessage = new Label();
+            var gameClearSprite = new Sprite(160, 128);
+            gameClearSprite.image = core_ref.assets["./resources/gameclear.png"];
 
             if (this.left == 0) {
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
-                finishMessage.text = "Game Over...";
-                finishMessage.x = 216;
-                finishMessage.y = 256;
-                finishMessage.color = 'red';
+                // finishMessage.text = "Game Over...";
+                // finishMessage.x = 216;
+                // finishMessage.y = 256;
+                // finishMessage.color = 'red';
                 gameFinishScene.addChild(finishMessage);
                 core_ref.pushScene(gameFinishScene);
                 core_ref.stop();
             }
 
             if (map_ref.checkTile(this.x, this.y) == 3) {
-                finishMessage.text = "Game Clear!!";
-                finishMessage.x = 216;
-                finishMessage.y = 256;
-                finishMessage.color = 'red';
-                gameFinishScene.addChild(finishMessage);
+                gameClearSprite.x = CELL_LENGTH*5.5;
+                gameClearSprite.y = CELL_LENGTH*6;
+                gameClearSprite.frame = 1;
+                gameFinishScene.addChild(gameClearSprite);
                 core_ref.pushScene(gameFinishScene);
                 var uname = document.getElementById("uname");
                 sendRank(uname, this.left);

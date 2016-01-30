@@ -18,8 +18,12 @@ class RankingServer < Sinatra::Base
 	end
 
   post '/', provides: :json do
-    connect_opt = YAML.load_file("./config/config.yml")
-    DB = Sequel.postgres('ggjsap2016-t3', connect_opt)
+    if ENV['DATABASE_URL'].nil?
+      connect_opt = YAML.load_file("./config/config.yml")
+      DB = Sequel.postgres('ggjsap2016-t3', connect_opt)
+    else
+      DB = Sequel.connect(ENV['DATABASE_URL'])
+    end
 
 		result = JSON.parse(request.body.read)["result"]
 
@@ -44,8 +48,12 @@ class RankingServer < Sinatra::Base
   end
 
   get '/ranking' do
-    connect_opt = YAML.load_file("./config/config.yml")
-    DB = Sequel.postgres('ggjsap2016-t3', connect_opt)
+    if ENV['DATABASE_URL'].nil?
+      connect_opt = YAML.load_file("./config/config.yml")
+      DB = Sequel.postgres('ggjsap2016-t3', connect_opt)
+    else
+      DB = Sequel.connect(ENV['DATABASE_URL'])
+    end
 
     @results = DB[:results].order(Sequel.desc(:left)).limit(10).all
     slim :ranking

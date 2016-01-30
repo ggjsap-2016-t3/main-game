@@ -9,21 +9,23 @@ var Robo = Class.create({
         this.sprite.addEventListener('enterframe', function() {
             this.frame = this.age % 3;
 
-            if (core_ref.input.right && !map_ref.hitTest(this.x + CELL_LENGTH, this.y)) {
-                this.x += CELL_LENGTH;
-                this.left -= 1;
-            }
-            if (core_ref.input.left && !map_ref.hitTest(this.x - CELL_LENGTH, this.y)) {
-                this.x -= CELL_LENGTH;
-                this.left -= 1;
-            }
-            if (core_ref.input.down && !map_ref.hitTest(this.x, this.y + CELL_LENGTH)) {
-                this.y += CELL_LENGTH;
-                this.left -= 1;
-            }
-            if (core_ref.input.up && !map_ref.hitTest(this.x, this.y - CELL_LENGTH)) {
-                this.y -= CELL_LENGTH;
-                this.left -= 1;
+            if (core_ref.frame % 5 == 0) {
+                if (core_ref.input.right && !map_ref.hitTest(this.x + CELL_LENGTH, this.y)) {
+                    this.x += CELL_LENGTH;
+                    this.left -= 1;
+                }
+                if (core_ref.input.left && !map_ref.hitTest(this.x - CELL_LENGTH, this.y)) {
+                    this.x -= CELL_LENGTH;
+                    this.left -= 1;
+                }
+                if (core_ref.input.down && !map_ref.hitTest(this.x, this.y + CELL_LENGTH)) {
+                    this.y += CELL_LENGTH;
+                    this.left -= 1;
+                }
+                if (core_ref.input.up && !map_ref.hitTest(this.x, this.y - CELL_LENGTH)) {
+                    this.y -= CELL_LENGTH;
+                    this.left -= 1;
+                }
             }
             // leftLabel.text = left;
             // if (map.checkTile(this.x, this.y) == 3) {
@@ -33,16 +35,16 @@ var Robo = Class.create({
 
             var gameFinishScene = new Scene();
             gameFinishScene.backgroundColor = 'gray';
-            // var finishMessage = new Label();
+            var finishMessage = new Label();
             var gameClearSprite = new Sprite(160, 128);
             gameClearSprite.image = core_ref.assets["./resources/gameclear.png"];
 
             if (this.left == 0) {
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
-                // finishMessage.text = "Game Over...";
-                // finishMessage.x = 216;
-                // finishMessage.y = 256;
-                // finishMessage.color = 'red';
+                finishMessage.text = "Game Over...";
+                finishMessage.x = 216;
+                finishMessage.y = 256;
+                finishMessage.color = 'red';
                 gameFinishScene.addChild(finishMessage);
                 core_ref.pushScene(gameFinishScene);
                 core_ref.stop();
@@ -58,7 +60,7 @@ var Robo = Class.create({
                 core_ref.assets["./resources/ggj16_ending.ogg"].play();
 
                 core_ref.pushScene(gameFinishScene);
-                var uname = document.getElementById("uname");
+                var uname = document.getElementById("uname").value;
                 sendRank(uname, this.left);
                 core_ref.stop();
             }

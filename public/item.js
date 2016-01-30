@@ -22,8 +22,8 @@ var Item = Class.create({
     setPositionRandomly: function(map){
         var isPlased = false;
         while (!isPlased) {
-            this.sprite.x = CELL_LENGTH * Math.floor(Math.random()*16);
-            this.sprite.y = CELL_LENGTH * Math.floor(Math.random()*16);
+            this.sprite.x = CELL_LENGTH * Math.floor(Math.random()*15);
+            this.sprite.y = CELL_LENGTH * Math.floor(Math.random()*15);
             if (map.collisionData[this.sprite.y/CELL_LENGTH][this.sprite.x/CELL_LENGTH] == 0) {
                 isPlased = true;
             }

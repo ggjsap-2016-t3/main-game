@@ -1,0 +1,4 @@
+options:
+  host: "localhost"
+  user: "user_name"
+  password: "password"

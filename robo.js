@@ -5,9 +5,55 @@ var Robo = Class.create({
         this.sprite.x = initialPositionX;
         this.sprite.y = initialPositionY;
         this.sprite.left = initialBattery;
+        this.sprite.cntHittedArrowKey = 0;
+        this.sprite.hittedArrowKey = "";
 
         this.sprite.addEventListener('enterframe', function() {
-            this.frame = this.age % 3;
+            if (core_ref.frame % 3 == 0) {
+                if (core_ref.input.up) {
+                    if (this.cntHittedArrowKey % 2 == 0){
+                        this.frame = 3 + 1;
+                    } else if (this.cntHittedArrowKey % 2 == 1){
+                        this.frame = 3 + 2;
+                    }
+                    this.hittedArrowKey = "up"
+                    this.cntHittedArrowKey += 1;
+                } else if (core_ref.input.down) {
+                    if (this.cntHittedArrowKey % 2 == 0) {
+                        this.frame = 0 + 1;
+                    } else if (this.cntHittedArrowKey % 2 == 1) {
+                        this.frame = 0 + 2;
+                    }
+                    this.hittedArrowKey = "down"
+                    this.cntHittedArrowKey += 1;
+                } else if (core_ref.input.left) {
+                    if (this.cntHittedArrowKey % 2 == 0) {
+                        this.frame = 6 + 1;
+                    } else if (this.cntHittedArrowKey % 2 == 1) {
+                        this.frame = 6 + 2;
+                    }
+                    this.hittedArrowKey = "left"
+                    this.cntHittedArrowKey += 1;
+                } else if (core_ref.input.right) {
+                    if (this.cntHittedArrowKey % 2 == 0) {
+                        this.frame = 9 + 1;
+                    } else if (this.cntHittedArrowKey % 2 == 1) {
+                        this.frame = 9 + 2;
+                    }
+                    this.hittedArrowKey = "right"
+                    this.cntHittedArrowKey += 1;
+                } else {
+                    if (this.hittedArrowKey == "up"){
+                        this.frame = 3;
+                    } else if (this.hittedArrowKey == "down") {
+                        this.frame = 0;
+                    } else if (this.hittedArrowKey == "left") {
+                        this.frame = 6;
+                    } else if (this.hittedArrowKey == "right"){
+                        this.frame = 9;
+                    }
+                }
+            }
 
             if (core_ref.frame % 5 == 0) {
                 if (core_ref.input.right && !map_ref.hitTest(this.x + CELL_LENGTH, this.y)) {

@@ -1,5 +1,3 @@
-var CELL_LENGTH = 32;
-
 var Item = Class.create({
     initialize: function(level, core_ref, map_ref, robo_ref){
         this.level = level;

@@ -55,6 +55,7 @@ class RankingServer < Sinatra::Base
       DB = Sequel.connect(ENV['DATABASE_URL'])
     end
 
+    @title = "ランキング"
     @results = DB[:results].order(Sequel.desc(:left)).limit(10).all
     slim :ranking
   end
@@ -62,7 +63,7 @@ class RankingServer < Sinatra::Base
   helpers do
     def page_title(title = nil)
       @title = title if title
-      @title ? "#{@title} - GGJ Sapporo 2016 Team3" : "GGJ Sapporo 2016 Team3"
+      @title ? "#{@title} - Roque" : "Roque"
     end
   end
 end

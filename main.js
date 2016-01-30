@@ -14,7 +14,6 @@ var Item = Class.create({
             if(this.frame == 0){
                 if(this.intersect(robo_ref.sprite)){
                     this.frame += 1;
-
                     console.log(robo_ref.sprite.left);
                     robo_ref.sprite.left += level*4;
 
@@ -65,16 +64,17 @@ var Robo = Class.create({
                     this.left -= 1;
                 }
             }
+
             // leftLabel.text = left;
             // if (map.checkTile(this.x, this.y) == 3) {
             //     // leftLabel.text = "成";
             //     core.stop();
             // }
             if (this.left == 0) {
+                core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.stop();
             }
         });
-
         core_ref.rootScene.addChild(this.sprite);
     },
 
@@ -106,10 +106,19 @@ window.onload = function() {
     core.preload("./resources/battery1.png");
     core.preload("./resources/battery2.png");
     core.preload("./resources/fog.png");
+    core.preload("./resources/ggj16_ritual.ogg");
 
     core.onload = function() {
+        if(core.assets["./resources/ggj16_ritual.ogg"].src){
+            core.assets["./resources/ggj16_ritual.ogg"].play();
+            core.assets["./resources/ggj16_ritual.ogg"].src.loop = true;
+        }
 
-
+        core.rootScene.onenterframe = function() {
+            if(!core.assets["./resources/ggj16_ritual.ogg"].src){
+                core.assets["./resources/ggj16_ritual.ogg"].play();
+            }
+        };
 
         // var robo = new Sprite(32, 32);
         // robo.image = core.assets["./resources/robo.png"];

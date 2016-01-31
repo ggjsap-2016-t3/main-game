@@ -72,6 +72,7 @@ var Enemy = Class.create({
                 // core_ref.assets['./resources/getitem.mp3'].play();
                 if(robo_ref.sprite.left>1){
                     robo_ref.sprite.left -= this.damage;
+                    core_ref.assets["./resources/ggj16_se_hit.ogg"].play();
                 }
             }
             

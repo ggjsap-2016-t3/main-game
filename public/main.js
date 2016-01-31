@@ -11,6 +11,7 @@ window.onload = function() {
         console.log(resourcePath+"/"+assets[i]);
         core.preload(resourcePath+"/"+assets[i]);
     }
+
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){
             core.assets["./resources/ggj16_ritual.ogg"].play();

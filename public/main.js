@@ -1,19 +1,16 @@
 window.onload = function() {
     var core = new Core(512, 512);
     core.fps = 30;
-    core.preload("./resources/robo.png");
-    core.preload("./resources/map-tile.png");
-    core.preload("./resources/number.png");
-    core.preload("./resources/battery1.png");
-    core.preload("./resources/battery2.png");
-    core.preload("./resources/fog.png");
-    core.preload("./resources/ggj16_ritual.ogg");
-    core.preload("./resources/batteryfont.png");
-    core.preload("./resources/gameclear.png");
-    core.preload("./resources/gameover.png");
-    core.preload("./resources/ggj16_ending.ogg");
-    core.preload("./resources/getitem.mp3");
-    core.preload("./resources/gameover.mp3");
+    var resourcePath = "./resources"
+    var assets =
+        ["robo.png", "map-tile.png", "number.png", "battery1.png",
+         "battery2.png", "fog.png", "ggj16_ritual.ogg", "batteryfont.png",
+         "gameclear.png", "gameover.png", "ggj16_ending.ogg", "getitem.mp3",
+         "gameover.mp3"];
+    for (i=0; i<assets.length; i++){
+        console.log(resourcePath+"/"+assets[i]);
+        core.preload(resourcePath+"/"+assets[i]);
+    }
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){

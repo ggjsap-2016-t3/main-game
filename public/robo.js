@@ -86,6 +86,21 @@ var Robo = Class.create({
                 gameOverSprite.y = CELL_LENGTH*6;
                 gameFinishScene.addChild(gameOverSprite);
 
+                var replayButton = new Entity();
+                replayButton.width = CELL_LENGTH * 2;
+                replayButton.height = CELL_LENGTH * 0.8;
+                replayButton.x = CELL_LENGTH * 7;
+                replayButton.y = CELL_LENGTH * 12;
+                replayButton._element = document.createElement('input');
+                replayButton._element.id = 'replay';
+                replayButton._element.type = 'image';
+                replayButton._element.accesskey = "r";
+                replayButton._element.src = "./resources/replay.png";
+                replayButton._element.addEventListener('click', function() {
+                    window.location.href = './index.html';
+                });
+                gameFinishScene.addChild(replayButton);
+
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/gameover.mp3"].play();
                 core_ref.pushScene(gameFinishScene);

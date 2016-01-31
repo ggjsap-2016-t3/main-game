@@ -8,7 +8,7 @@ var Enemy = Class.create({
         this.setPositionRandomly(map_ref);
         this.sprite.damage = damage;
         core_ref.rootScene.addChild(this.sprite);
-        
+
         this.sprite.addEventListener('enterframe', function() {
             function roboDirectionY(robo, spriteY, range_){
                 var dir = "none";
@@ -25,7 +25,7 @@ var Enemy = Class.create({
                 return dir;
 
             }
-            
+
             function roboDirectionX(robo, spriteX, range_){
                 var dir = "none";
                 if(
@@ -40,7 +40,7 @@ var Enemy = Class.create({
                 }
                 return dir;
             }
-            
+
             if (core_ref.frame % 10 == 0) {
                 this.frame = ( this.age )%4;
                 var moveVertically = false;
@@ -74,7 +74,7 @@ var Enemy = Class.create({
                     this.y -= CELL_LENGTH;
                 }
             }
-           
+
             if (core_ref.frame % 10 == 0) {
                 if(this.intersect(robo_ref.sprite)){
                     if(robo_ref.sprite.left>1){
@@ -83,10 +83,10 @@ var Enemy = Class.create({
                     }
                 }
             }
-            
+
         });
-    }, 
-    
+    },
+
     setPositionRandomly: function(map){
         var isPlased = false;
         while (!isPlased) {

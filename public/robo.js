@@ -114,6 +114,20 @@ var Robo = Class.create({
                 gameClearSprite.frame = 1;
                 gameFinishScene.addChild(gameClearSprite);
 
+                function cookieLoad(){
+                    var cookies = document.cookie.replace(' ', '').split(';')
+                    var userName;
+                    $.each(cookies, function(i, cookie) {
+                        if (cookie.split("=")[0] == "userName") {
+                            userName = cookie.split("=")[1];
+                        } else {
+                            userName = "";
+                        }
+                    });
+                    return userName;
+                }
+                var userName = cookieLoad();
+
                 var unameInput = new Entity();
                 unameInput.width = CELL_LENGTH * 4;
                 unameInput.height = CELL_LENGTH * 0.8;
@@ -122,7 +136,8 @@ var Robo = Class.create({
                 unameInput._element = document.createElement('input');
                 unameInput._element.type = 'text';
                 unameInput._element.id = 'uname';
-                unameInput._element.placeholder = 'YOUR NAME';
+                unameInput._element.value = userName;
+                unameInput._element.placeholder = "YOUR NAME";
 
                 var unameSendButton = new Entity();
                 unameSendButton.width = CELL_LENGTH * 2;

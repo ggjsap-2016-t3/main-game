@@ -131,3 +131,10 @@ function rootSearch(map){
         return false;
     }
 }
+
+function randomLeft(){
+    var ave = 33;
+    var a = 5; // 振れ幅
+    var ran = Math.random();
+    return Math.floor(-8*a*ran*ran + 8*a*ran + ave - a);
+}

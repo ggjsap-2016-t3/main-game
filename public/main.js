@@ -32,7 +32,7 @@ window.onload = function() {
         // robo.x = CELL_LENGTH;
         // robo.y = CELL_LENGTH;
 
-        var left = randomLeft()
+        var left = randomLeft();
         var leftLabel = new Label(left);
         leftLabel.x = 330;
         leftLabel.y = 10;

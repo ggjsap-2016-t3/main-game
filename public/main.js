@@ -15,6 +15,7 @@ window.onload = function() {
     core.preload("./resources/getitem.mp3");
     core.preload("./resources/gameover.mp3");
     core.preload("./resources/enemy.png");
+    core.preload("./resources/ggj16_se_hit.ogg");
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){

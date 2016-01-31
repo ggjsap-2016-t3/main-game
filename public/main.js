@@ -66,13 +66,19 @@ window.onload = function() {
         var enemys = new Array();
 
         for (i=0; i<2; i++){
-            items.push(new Item(1, core, map, robo));
+            items.push(new Item(1, core, map, robo, 3));
+            items.push(new Item(1, core, map, robo, 4));
+            items.push(new Item(1, core, map, robo, 5));
+            items.push(new Item(1, core, map, robo, 6));
         }
         for (i=0; i<2; i++){
-            items.push(new Item(2, core, map, robo));
+            items.push(new Item(2, core, map, robo, 3));
+            items.push(new Item(2, core, map, robo, 4));
+            items.push(new Item(2, core, map, robo, 5));
+            items.push(new Item(2, core, map, robo, 6));
         }
-        for (i=0; i<2; i++){
-            enemys.push(new Enemy(7, 2, core, map, robo));
+        for (i=0; i<4; i++){
+            enemys.push(new Enemy(7, 4, core, map, robo));
         }
 
         rootSearch(map);

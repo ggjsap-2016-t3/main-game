@@ -1,5 +1,5 @@
 var Item = Class.create({
-    initialize: function(level, core_ref, map_ref, robo_ref){
+    initialize: function(level, core_ref, map_ref, robo_ref, gain){
         this.level = level;
 
         this.sprite = new Sprite(32, 32);
@@ -13,7 +13,7 @@ var Item = Class.create({
                     var sound = core_ref.assets['./resources/getitem.mp3'].clone();
                     sound.play();
                     console.log(robo_ref.sprite.left);
-                    robo_ref.sprite.left += level*4;
+                    robo_ref.sprite.left += level*gain;
                     console.log(robo_ref.sprite.left);
                 }
             }

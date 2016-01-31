@@ -153,7 +153,7 @@ var Robo = Class.create({
                 unameSendButton._element = document.createElement('input');
                 unameSendButton._element.id = 'uname-send';
                 unameSendButton._element.type = 'image';
-                unameSendButton._element.src = '/resources/ok.png';
+                unameSendButton._element.src = './resources/ok.png';
 
                 var left = this.left;
                 unameSendButton._element.addEventListener('click', function() {
@@ -162,7 +162,7 @@ var Robo = Class.create({
                     document.getElementById('uname').remove();
                     document.getElementById('uname-send').remove();
                     setTimeout(function(){
-                        window.location.href = "/ranking";
+                        window.location.href = "./ranking";
                     }, 1000);
                 });
                 replayButton.x = CELL_LENGTH * 7;

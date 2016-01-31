@@ -16,6 +16,11 @@ window.onload = function() {
     core.preload("./resources/gameover.mp3");
     core.preload("./resources/enemy.png");
 
+    core.keybind('H'.charCodeAt(0), 'left');
+    core.keybind('J'.charCodeAt(0), 'down');
+    core.keybind('K'.charCodeAt(0), 'up');
+    core.keybind('L'.charCodeAt(0), 'right');
+
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){
             core.assets["./resources/ggj16_ritual.ogg"].play();
@@ -60,10 +65,10 @@ window.onload = function() {
         var item2 = new Item(2, core, map, robo);
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
-        
+
         var enemy1 = new Enemy(7, 2, core, map, robo);
         var enemy2 = new Enemy(7, 2, core, map, robo);
-        
+
         rootSearch(map);
         var ui = new UI(core, robo);
     };

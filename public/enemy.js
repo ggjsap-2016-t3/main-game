@@ -42,6 +42,7 @@ var Enemy = Class.create({
             }
             
             if (core_ref.frame % 10 == 0) {
+                this.frame = this.age%4;
                 var moveVertically = false;
                 if (
                     roboDirectionX(robo_ref, this.x, range*CELL_LENGTH)=="right" &&

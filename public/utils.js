@@ -20,7 +20,7 @@ function sendRank(uname, left){
         xhr.open("POST", url);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        document.cookie("userName="+encodeURIComponent(uname));
+        document.cookie = "userName="+encodeURIComponent(uname);
         console.log(jsonData);
         return true;
     }else{

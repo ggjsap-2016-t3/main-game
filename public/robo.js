@@ -115,18 +115,18 @@ var Robo = Class.create({
                 gameFinishScene.addChild(gameClearSprite);
 
                 function cookieLoad(){
-                    var retCookie = new Array();
-                    var allcookies = document.cookie;
-                    if (allcookies!=''){
-                        var cokies = allcookies.split(';');
-                        for (i=0; i<cookies.length; i++){
-                            var cookie = cookies[i].split('=');
-                            retCookie[cookie[0]] = decodeURIComponent(cookie[1]);
+                    var cookies = document.cookie.replace(' ', '').split(';')
+                    var userName;
+                    $.each(cookies, function(i, cookie) {
+                        if (cookie.split("=")[0] == "userName") {
+                            userName = cookie.split("=")[1];
+                        } else {
+                            userName = "";
                         }
-                    }
-                    return retCookie;
+                    });
+                    return userName;
                 }
-                var userName = cookieLoad["userName"];
+                var userName = cookieLoad();
 
                 var unameInput = new Entity();
                 unameInput.width = CELL_LENGTH * 4;
@@ -136,7 +136,8 @@ var Robo = Class.create({
                 unameInput._element = document.createElement('input');
                 unameInput._element.type = 'text';
                 unameInput._element.id = 'uname';
-                unameInput._element.placeholder = cookieLoad["userName"] || "YOUR NAME";
+                unameInput._element.value = userName;
+                unameInput._element.placeholder = "YOUR NAME";
 
                 var unameSendButton = new Entity();
                 unameSendButton.width = CELL_LENGTH * 2;

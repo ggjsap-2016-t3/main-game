@@ -3,7 +3,7 @@ Roque - GGJ Sapporo 2016 Team 3
 This is a Roguelike game.
 Let us try to go to the goal before buttery of the chief robot turn off!!
 
-![Game](https://raw.githubusercontent.com/ggjsap-2016-t3/main-game/image-in-readme/public/resources/in-readme.gif)
+![clear](https://cloud.githubusercontent.com/assets/2035364/12700671/7344a9f6-c82f-11e5-9290-6dc0de29c43a.gif)
 
 ## How to play
 

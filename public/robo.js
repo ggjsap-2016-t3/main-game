@@ -102,7 +102,7 @@ var Robo = Class.create({
                 gameFinishScene.addChild(replayButton);
 
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
-                core_ref.assets["./resources/gameover.mp3"].play();
+                core_ref.assets["./resources/gameover.ogg"].play();
                 core_ref.pushScene(gameFinishScene);
                 core_ref.stop();
             }

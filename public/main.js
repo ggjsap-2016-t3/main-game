@@ -12,8 +12,8 @@ window.onload = function() {
     core.preload("./resources/gameclear.png");
     core.preload("./resources/gameover.png");
     core.preload("./resources/ggj16_ending.ogg");
-    core.preload("./resources/getitem.mp3");
-    core.preload("./resources/gameover.mp3");
+    core.preload("./resources/getitem.ogg");
+    core.preload("./resources/gameover.ogg");
     core.preload("./resources/enemy.png");
     core.preload("./resources/ggj16_se_hit.ogg");
     core.preload("./resources/staff.png");

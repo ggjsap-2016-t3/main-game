@@ -88,6 +88,9 @@ var Robo = Class.create({
                 replayButton._element.accesskey = "r";
                 replayButton._element.src = "./resources/replay.png";
                 replayButton._element.addEventListener('click', function() {
+                    document.getElementById('uname').remove();
+                    document.getElementById('uname-send').remove();
+                    document.getElementById('replay').remove();
                     window.location.href = './index.html';
                 });
 
@@ -113,7 +116,7 @@ var Robo = Class.create({
                 scoreSprite.x = CELL_LENGTH*6;
                 scoreSprite.y = CELL_LENGTH;
                 gameFinishScene.addChild(scoreSprite);
-                
+
                 var digitSprites = [new Sprite(16, 16), new Sprite(16, 16)];
                 digitSprites[0].image = core_ref.assets["./resources/number.png"];
                 digitSprites[1].image = core_ref.assets["./resources/number.png"];
@@ -126,10 +129,10 @@ var Robo = Class.create({
 
                 digitSprites[0].frame = this.left/10;
                 digitSprites[1].frame = this.left%10;
-                
+
                 gameFinishScene.addChild(digitSprites[0]);
                 gameFinishScene.addChild(digitSprites[1]);
-                
+
                 gameFinishScene.backgroundColor = 'gray';
                 gameClearSprite.x = CELL_LENGTH*5.5;
                 gameClearSprite.y = CELL_LENGTH*2.5;
@@ -183,6 +186,7 @@ var Robo = Class.create({
                     sendRank(uname, left);
                     document.getElementById('uname').remove();
                     document.getElementById('uname-send').remove();
+                    document.getElementById('replay').remove();
                     setTimeout(function(){
                         window.location.href = "./ranking";
                     }, 1000);

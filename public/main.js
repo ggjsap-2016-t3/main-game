@@ -14,6 +14,7 @@ window.onload = function() {
     core.preload("./resources/ggj16_ending.ogg");
     core.preload("./resources/getitem.mp3");
     core.preload("./resources/gameover.mp3");
+    core.preload("./resources/enemy.png");
 
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){
@@ -64,6 +65,10 @@ window.onload = function() {
         var item2 = new Item(2, core, map, robo);
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
+        
+        var enemy1 = new Enemy(7, 2, core, map, robo);
+        var enemy2 = new Enemy(7, 2, core, map, robo);
+        
         rootSearch(map);
         var ui = new UI(core, robo);
     };

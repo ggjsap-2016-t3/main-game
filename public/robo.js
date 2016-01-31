@@ -91,7 +91,7 @@ var Robo = Class.create({
                     window.location.href = './index.html';
                 });
 
-            if (this.left == 0) {
+            if (this.left <= 0) {
                 gameFinishScene.backgroundColor = 'black';
                 gameOverSprite.x = CELL_LENGTH*5.5;
                 gameOverSprite.y = CELL_LENGTH*6;
@@ -113,7 +113,7 @@ var Robo = Class.create({
                 scoreSprite.x = CELL_LENGTH*6;
                 scoreSprite.y = CELL_LENGTH;
                 gameFinishScene.addChild(scoreSprite);
-                
+
                 var digitSprites = [new Sprite(16, 16), new Sprite(16, 16)];
                 digitSprites[0].image = core_ref.assets["./resources/number.png"];
                 digitSprites[1].image = core_ref.assets["./resources/number.png"];
@@ -126,10 +126,10 @@ var Robo = Class.create({
 
                 digitSprites[0].frame = this.left/10;
                 digitSprites[1].frame = this.left%10;
-                
+
                 gameFinishScene.addChild(digitSprites[0]);
                 gameFinishScene.addChild(digitSprites[1]);
-                
+
                 gameFinishScene.backgroundColor = 'gray';
                 gameClearSprite.x = CELL_LENGTH*5.5;
                 gameClearSprite.y = CELL_LENGTH*2.5;

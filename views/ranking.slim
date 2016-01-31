@@ -1,21 +1,25 @@
 .row
   .col-xs-12
-    .list-group
-      h2
-        | Ranking
-      - @results.each_with_index do |result, i|
-        .list-group-item
-          h3.list-group-item-heading
-            = ordinalize(i + 1)
-          .list-group-item-text
-            dl.dl-horizontal
-              dt
-                | Name
-              dd
-                = result[:user]
+    table.table.table-hover
+      thead
+        th
 
-              dt
-                | Battery
-              dd
-                = result[:left]
+        th
+          | Grade
+        th
+          | Battery
+        th
+          | Name
+
+      tbody
+      - @results.each_with_index do |result, i|
+        tr style="height: 60px"
+          - if i < 3
+            td width="20px" style="vertical-align: middle;"
+              img src=url("/img/#{ordinalize(i + 1)}.png")
+          - else
+            td width="20px" style="vertical-align: middle;"
+          td style="vertical-align: middle;" = ordinalize(i + 1)
+          td style="vertical-align: middle;" = result[:left]
+          td style="vertical-align: middle;" = result[:user]
 

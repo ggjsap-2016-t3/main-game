@@ -85,7 +85,7 @@ var Robo = Class.create({
                 gameOverSprite.x = CELL_LENGTH*5.5;
                 gameOverSprite.y = CELL_LENGTH*6;
                 gameFinishScene.addChild(gameOverSprite);
-                
+
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/gameover.mp3"].play();
                 core_ref.pushScene(gameFinishScene);
@@ -99,12 +99,41 @@ var Robo = Class.create({
                 gameClearSprite.frame = 1;
                 gameFinishScene.addChild(gameClearSprite);
 
+                var unameInput = new Entity();
+                unameInput.width = CELL_LENGTH * 4;
+                unameInput.height = CELL_LENGTH * 0.8;
+                unameInput.x = CELL_LENGTH * 6;
+                unameInput.y = CELL_LENGTH * 13;
+                unameInput._element = document.createElement('input');
+                unameInput._element.type = 'text';
+                unameInput._element.id = 'uname';
+
+                var unameSendButton = new Entity();
+                unameSendButton.width = CELL_LENGTH * 2;
+                unameSendButton.height = CELL_LENGTH * 0.8;
+                unameSendButton.x = CELL_LENGTH * 7;
+                unameSendButton.y = CELL_LENGTH * 14;
+                unameSendButton._element = document.createElement('button');
+                unameSendButton._element.innerHTML = "登録";
+                unameSendButton._element.id = 'uname-send';
+                unameSendButton._element.type = 'button';
+                unameSendButton._element.class = 'btn btn-primary';
+                var left = this.left;
+                unameSendButton._element.addEventListener('click', function() {
+                    var uname = document.getElementById("uname").value;
+                    sendRank(uname, left);
+                    document.getElementById('uname').remove();
+                    document.getElementById('uname-send').remove();
+                });
+
+                gameFinishScene.addChild(unameInput);
+                gameFinishScene.addChild(unameSendButton);
+
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/ggj16_ending.ogg"].play();
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.pushScene(gameFinishScene);
-                var uname = document.getElementById("uname").value;
-                sendRank(uname, this.left);
+
                 core_ref.stop();
             }
         });

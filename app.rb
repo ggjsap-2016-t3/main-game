@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/contrib'
 require "sinatra/reloader"
+require 'active_support/core_ext/integer/inflections'
 require 'slim'
 require 'yaml'
 require 'sequel'
@@ -64,6 +65,10 @@ class RankingServer < Sinatra::Base
     def page_title(title = nil)
       @title = title if title
       @title ? "#{@title} - Roque" : "Roque"
+    end
+
+    def ordinalize(number)
+      number.ordinalize
     end
   end
 end

@@ -16,6 +16,7 @@ window.onload = function() {
     core.preload("./resources/gameover.mp3");
     core.preload("./resources/enemy.png");
     core.preload("./resources/ggj16_se_hit.ogg");
+    core.preload("./resources/staff.png");
 
     core.keybind('H'.charCodeAt(0), 'left');
     core.keybind('J'.charCodeAt(0), 'down');

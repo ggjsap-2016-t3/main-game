@@ -34,9 +34,9 @@ window.onload = function() {
 
         var left = function() {
             var ave = 33;
-            var a = 5;
+            var a = 5; // 振れ幅
             var ran = Math.random();
-            return Math.floor(-4*a*ran*ran + 4*a*ran + ave - a);
+            return Math.floor(-8*a*ran*ran + 8*a*ran + ave - a);
         }();
         var leftLabel = new Label(left);
         leftLabel.x = 330;

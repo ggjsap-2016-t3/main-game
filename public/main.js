@@ -67,7 +67,7 @@ window.onload = function() {
         for (i=0; i<2; i++){
             items.push(new Item(1, core, map, robo));
         }
-        for (i=0; i<8; i++){
+        for (i=0; i<2; i++){
             items.push(new Item(2, core, map, robo));
         }
         for (i=0; i<2; i++){

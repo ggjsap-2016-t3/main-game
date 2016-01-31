@@ -79,18 +79,9 @@ var Robo = Class.create({
             var gameOverSprite = new Sprite(160, 128);
             gameClearSprite.image = core_ref.assets["./resources/gameclear.png"];
             gameOverSprite.image = core_ref.assets["./resources/gameover.png"];
-
-            if (this.left == 0) {
-                gameFinishScene.backgroundColor = 'black';
-                gameOverSprite.x = CELL_LENGTH*5.5;
-                gameOverSprite.y = CELL_LENGTH*6;
-                gameFinishScene.addChild(gameOverSprite);
-
-                var replayButton = new Entity();
+            var replayButton = new Entity();
                 replayButton.width = CELL_LENGTH * 2;
                 replayButton.height = CELL_LENGTH * 0.8;
-                replayButton.x = CELL_LENGTH * 7;
-                replayButton.y = CELL_LENGTH * 12;
                 replayButton._element = document.createElement('input');
                 replayButton._element.id = 'replay';
                 replayButton._element.type = 'image';
@@ -99,6 +90,15 @@ var Robo = Class.create({
                 replayButton._element.addEventListener('click', function() {
                     window.location.href = './index.html';
                 });
+
+            if (this.left == 0) {
+                gameFinishScene.backgroundColor = 'black';
+                gameOverSprite.x = CELL_LENGTH*5.5;
+                gameOverSprite.y = CELL_LENGTH*6;
+                gameFinishScene.addChild(gameOverSprite);
+
+                replayButton.x = CELL_LENGTH * 7;
+                replayButton.y = CELL_LENGTH * 12;
                 gameFinishScene.addChild(replayButton);
 
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
@@ -135,7 +135,7 @@ var Robo = Class.create({
                 gameClearSprite.y = CELL_LENGTH*2.5;
                 gameClearSprite.frame = 1;
                 gameFinishScene.addChild(gameClearSprite);
-                
+
                 var staffSprite = new Sprite(87, 72);
                 staffSprite.image = core_ref.assets["./resources/staff.png"];
                 staffSprite.x = CELL_LENGTH*7;
@@ -160,7 +160,7 @@ var Robo = Class.create({
                 unameInput.width = CELL_LENGTH * 4;
                 unameInput.height = CELL_LENGTH * 0.8;
                 unameInput.x = CELL_LENGTH * 6;
-                unameInput.y = CELL_LENGTH * 13;
+                unameInput.y = CELL_LENGTH * 11.5;
                 unameInput._element = document.createElement('input');
                 unameInput._element.type = 'text';
                 unameInput._element.id = 'uname';
@@ -171,11 +171,11 @@ var Robo = Class.create({
                 unameSendButton.width = CELL_LENGTH * 2;
                 unameSendButton.height = CELL_LENGTH * 0.8;
                 unameSendButton.x = CELL_LENGTH * 7;
-                unameSendButton.y = CELL_LENGTH * 14;
+                unameSendButton.y = CELL_LENGTH * 13;
                 unameSendButton._element = document.createElement('input');
                 unameSendButton._element.id = 'uname-send';
                 unameSendButton._element.type = 'image';
-                unameSendButton._element.src = '/resources/ok.png';
+                unameSendButton._element.src = './resources/ok.png';
 
                 var left = this.left;
                 unameSendButton._element.addEventListener('click', function() {
@@ -184,12 +184,15 @@ var Robo = Class.create({
                     document.getElementById('uname').remove();
                     document.getElementById('uname-send').remove();
                     setTimeout(function(){
-                        window.location.href = "/ranking";
+                        window.location.href = "./ranking";
                     }, 1000);
                 });
+                replayButton.x = CELL_LENGTH * 7;
+                replayButton.y = CELL_LENGTH * 14;
 
                 gameFinishScene.addChild(unameInput);
                 gameFinishScene.addChild(unameSendButton);
+                gameFinishScene.addChild(replayButton);
 
                 core_ref.assets["./resources/ggj16_ritual.ogg"].volume = 0;
                 core_ref.assets["./resources/ggj16_ending.ogg"].play();

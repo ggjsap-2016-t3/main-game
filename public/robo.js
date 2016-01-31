@@ -110,9 +110,15 @@ var Robo = Class.create({
             if (map_ref.checkTile(this.x, this.y) == 3) {
                 gameFinishScene.backgroundColor = 'gray';
                 gameClearSprite.x = CELL_LENGTH*5.5;
-                gameClearSprite.y = CELL_LENGTH*6;
+                gameClearSprite.y = CELL_LENGTH*2.5;
                 gameClearSprite.frame = 1;
                 gameFinishScene.addChild(gameClearSprite);
+                
+                var staffSprite = new Sprite(87, 72);
+                staffSprite.image = core_ref.assets["./resources/staff.png"];
+                staffSprite.x = CELL_LENGTH*7;
+                staffSprite.y = CELL_LENGTH*8.5;
+                gameFinishScene.addChild(staffSprite);
 
                 var unameInput = new Entity();
                 unameInput.width = CELL_LENGTH * 4;

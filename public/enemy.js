@@ -79,7 +79,8 @@ var Enemy = Class.create({
                 if(this.intersect(robo_ref.sprite)){
                     if(robo_ref.sprite.left>1){
                         robo_ref.sprite.left -= this.damage;
-                        core_ref.assets["./resources/ggj16_se_hit.ogg"].play();
+                        var sound = core_ref.assets["./resources/ggj16_se_hit.ogg"].clone();
+                        sound.play();
                     }
                 }
             }

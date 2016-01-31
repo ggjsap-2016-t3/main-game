@@ -2,11 +2,19 @@ window.onload = function() {
     var core = new Core(512, 512);
     core.fps = 30;
     var resourcePath = "./resources"
-    var assets =
-        ["robo.png", "map-tile.png", "number.png", "battery1.png",
-         "battery2.png", "fog.png", "ggj16_ritual.ogg", "batteryfont.png",
-         "gameclear.png", "gameover.png", "ggj16_ending.ogg", "getitem.mp3",
-         "gameover.mp3", "enemy.png"];
+    var assets = [
+        // PNG Files
+        "battery1.png", "battery2.png", "batteryfont.png", "enemy.png",
+        "fog.png", "gameclear.png", "gameover.png", "map-tile.png",
+        "number.png", "ok.png", "robo.png",
+
+        // OGG Files
+        "ggj16_ending.ogg", "ggj16_ritual.ogg", "ggj16_goal.ogg",
+        "ggj16_stop.ogg",
+
+        // MP3 Files
+        "gameover.mp3", "getitem.mp3"
+    ];
     for (i=0; i<assets.length; i++){
         console.log(resourcePath+"/"+assets[i]);
         core.preload(resourcePath+"/"+assets[i]);

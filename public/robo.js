@@ -107,17 +107,18 @@ var Robo = Class.create({
                 unameInput._element = document.createElement('input');
                 unameInput._element.type = 'text';
                 unameInput._element.id = 'uname';
+                unameInput._element.placeholder = 'YOUR NAME';
 
                 var unameSendButton = new Entity();
                 unameSendButton.width = CELL_LENGTH * 2;
                 unameSendButton.height = CELL_LENGTH * 0.8;
                 unameSendButton.x = CELL_LENGTH * 7;
                 unameSendButton.y = CELL_LENGTH * 14;
-                unameSendButton._element = document.createElement('button');
-                unameSendButton._element.innerHTML = "登録";
+                unameSendButton._element = document.createElement('input');
                 unameSendButton._element.id = 'uname-send';
-                unameSendButton._element.type = 'button';
-                unameSendButton._element.class = 'btn btn-primary';
+                unameSendButton._element.type = 'image';
+                unameSendButton._element.src = '/resources/ok.png';
+
                 var left = this.left;
                 unameSendButton._element.addEventListener('click', function() {
                     var uname = document.getElementById("uname").value;

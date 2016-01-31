@@ -92,6 +92,14 @@ var Robo = Class.create({
                     window.location.href = './index.html';
                 });
 
+            var tweetButton = new Entity();
+            tweetButton._element = document.createElement('div');
+            tweetButton._element.class = "text-center";
+            tweetButton._element.innerHTML = '<a href="https://twitter.com/share\" class=\"twitter-share-button\"{count} data-url=\"https://ggjsap2016-t3.herokuapp.com\" data-text=\"I played Roque!! Score: ' + this.left + ' #ggjsap #ggj16\">Tweet</a>'
+            tweetButton.x = CELL_LENGTH * 7;
+            tweetButton.y = CELL_LENGTH * 15;
+
+
             if (this.left <= 0) {
                 gameFinishScene.backgroundColor = 'black';
                 gameOverSprite.x = CELL_LENGTH*5.5;
@@ -142,6 +150,17 @@ var Robo = Class.create({
                 staffSprite.x = CELL_LENGTH*7;
                 staffSprite.y = CELL_LENGTH*8.5;
                 gameFinishScene.addChild(staffSprite);
+
+                gameFinishScene.addChild(tweetButton);
+                !function(d,s,id){
+                    var js;
+                    var fjs = d.getElementsByTagName(s)[0];
+                    var p = /^http:/.test(d.location)?'http':'https';
+                        if(!d.getElementById(id)){js=d.createElement(s);
+                            js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js,fjs);
+                        }
+                }(document, 'script', 'twitter-wjs');
 
                 function cookieLoad(){
                     var cookies = document.cookie.replace(' ', '').split(';')

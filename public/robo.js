@@ -125,7 +125,9 @@ var Robo = Class.create({
                     sendRank(uname, left);
                     document.getElementById('uname').remove();
                     document.getElementById('uname-send').remove();
-                    window.location.href = "/ranking";
+                    setTimeout(function(){
+                        window.location.href = "/ranking";
+                    }, 1000);
                 });
 
                 gameFinishScene.addChild(unameInput);

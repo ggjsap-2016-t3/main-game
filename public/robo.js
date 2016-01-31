@@ -88,8 +88,6 @@ var Robo = Class.create({
                 replayButton._element.accesskey = "r";
                 replayButton._element.src = "./resources/replay.png";
                 replayButton._element.addEventListener('click', function() {
-                    document.getElementById('uname').remove();
-                    document.getElementById('uname-send').remove();
                     document.getElementById('replay').remove();
                     window.location.href = './index.html';
                 });

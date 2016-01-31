@@ -16,10 +16,10 @@ var UI = Class.create({
         this.digitSprites[1].image = core_ref.assets["./resources/number.png"];
 
         this.digitSprites[0].x = CELL_LENGTH*5.5;
-        this.digitSprites[0].y = CELL_LENGTH;
+        this.digitSprites[0].y = CELL_LENGTH * 0.3;
 
         this.digitSprites[1].x = CELL_LENGTH*5.5+CELL_LENGTH/2;
-        this.digitSprites[1].y = CELL_LENGTH;
+        this.digitSprites[1].y = CELL_LENGTH * 0.3;
 
         // for (var i=0; i < this.digitSprites; ++i) {
         //     this.digitSprites[i].addEventListener('enterframe', function() {
@@ -46,7 +46,7 @@ var UI = Class.create({
         this.batteryFontSprite = new Sprite(56*2, 8*2);
         this.batteryFontSprite.image = core_ref.assets["./resources/batteryfont.png"];
         this.batteryFontSprite.x = CELL_LENGTH;
-        this.batteryFontSprite.y = CELL_LENGTH;
+        this.batteryFontSprite.y = CELL_LENGTH * 0.3;
         core_ref.rootScene.addChild(this.batteryFontSprite);
 
     }

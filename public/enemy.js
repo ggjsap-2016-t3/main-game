@@ -42,25 +42,31 @@ var Enemy = Class.create({
             }
             
             if (core_ref.frame % 10 == 0) {
+                var moveVertically = false;
                 if (
                     roboDirectionX(robo_ref, this.x, range*CELL_LENGTH)=="right" &&
                     !map_ref.hitTest(this.x + CELL_LENGTH, this.y)
                 ){
                     this.x += CELL_LENGTH;
+                    moveVertically = true;
                 }
-                if(
+                else if(
                     roboDirectionX(robo_ref, this.x, range*CELL_LENGTH)=="left" &&
                     !map_ref.hitTest(this.x - CELL_LENGTH, this.y)
                 ){
                     this.x -= CELL_LENGTH;
+                    moveVertically = true;
                 }
+
                 if(
+                    !moveVertically &&
                     roboDirectionY(robo_ref, this.y, range*CELL_LENGTH)=="down" &&
                     !map_ref.hitTest(this.x, this.y + CELL_LENGTH)
                 ){
                     this.y += CELL_LENGTH;
                 }
-                if(
+                else if(
+                    !moveVertically &&
                     roboDirectionY(robo_ref, this.y, range*CELL_LENGTH)=="up" &&
                     !map_ref.hitTest(this.x, this.y - CELL_LENGTH)
                 ){

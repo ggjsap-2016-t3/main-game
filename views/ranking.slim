@@ -1,23 +1,21 @@
-.container
-  .row
-    .col-xs-12
-      h1.page_title
-        a href=uri("/")
-          | GGJSAP 2016 Team3
+.row
+  .col-xs-12
+    .list-group
+      h2
+        | Ranking
+      - @results.each_with_index do |result, i|
+        .list-group-item
+          h3.list-group-item-heading
+            = ordinalize(i + 1)
+          .list-group-item-text
+            dl.dl-horizontal
+              dt
+                | Name
+              dd
+                = result[:user]
 
-  .row
-    h2
-      | ランキング
-
-    - @results.each_with_index do |result, i|
-      .panel.panel-default
-        .panel-heading
-          h3 = "#{i + 1}位"
-        .panel-body
-          dl
-            dt ユーザ名
-            dd = result[:user]
-
-            dt 残り手数
-            dd = result[:left]
+              dt
+                | Battery
+              dd
+                = result[:left]
 

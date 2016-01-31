@@ -11,5 +11,20 @@ html[lang="en"]
     script src=uri("/js/bootstrap.min.js")
 
   body
-    == yield
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          a.navbar-brand href=url("/")
+            | Roque - GGJSAP 2016 Team3
+        #navbar.pull-right
+          ul.nav.navbar-nav
+            li
+              a href=url("http://globalgamejam.org/2016/games/roque")
+                | Our GGJ Team Site
+            li
+              a href="/"
+                | Replay
+
+    .container
+      == yield
 

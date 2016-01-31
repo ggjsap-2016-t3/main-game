@@ -6,12 +6,11 @@ window.onload = function() {
         ["robo.png", "map-tile.png", "number.png", "battery1.png",
          "battery2.png", "fog.png", "ggj16_ritual.ogg", "batteryfont.png",
          "gameclear.png", "gameover.png", "ggj16_ending.ogg", "getitem.mp3",
-         "gameover.mp3"];
+         "gameover.mp3", "enemy.png"];
     for (i=0; i<assets.length; i++){
         console.log(resourcePath+"/"+assets[i]);
         core.preload(resourcePath+"/"+assets[i]);
     }
-
     core.onload = function() {
         if(core.assets["./resources/ggj16_ritual.ogg"].src){
             core.assets["./resources/ggj16_ritual.ogg"].play();
@@ -29,12 +28,7 @@ window.onload = function() {
         // robo.x = CELL_LENGTH;
         // robo.y = CELL_LENGTH;
 
-        var left = function() {
-            var ave = 33;
-            var a = 5; // 振れ幅
-            var ran = Math.random();
-            return Math.floor(-8*a*ran*ran + 8*a*ran + ave - a);
-        }();
+        var left = randomLeft();
         var leftLabel = new Label(left);
         leftLabel.x = 330;
         leftLabel.y = 10;
@@ -61,6 +55,10 @@ window.onload = function() {
         var item2 = new Item(2, core, map, robo);
         var item3 = new Item(1, core, map, robo);
         var item4 = new Item(2, core, map, robo);
+
+        var enemy1 = new Enemy(7, 2, core, map, robo);
+        var enemy2 = new Enemy(7, 2, core, map, robo);
+
         rootSearch(map);
         var ui = new UI(core, robo);
     };

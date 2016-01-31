@@ -1,42 +1,44 @@
 # Roque - Global Game Jam Sapporo 2016 Team3
 v2.0.0
 
-## 概要
-ローグライク風のゲーム。
-主人公のロボットのバッテリーが切れる前にゴールを目指そう！
+## Introduction
+This is a Roguelike game.
+Let us try to go to the goal before buttery of the chief robot turn off!!
 
-## 遊び方
+## How to play
 
-- 矢印キーで移動。
+- move by arrow keys
+- game over when buttery turn off.
+- Try to go to the goal before buttery turn off.
+- When you collect the buttery which dropped under the ground, the buttery goes flat.
 
-- バッテリーが0になるとゲームオーバー。
-
-- バッテリーが0になる前にゴールを目指すこと。
-
-- 地面に落ちているバッテリーを拾うと、バッテリーが回復する。
-
-## 開発の始め方
+## How to develop
 
 ```
 git clone https://github.com/ggjsap-2016-t3/main-game
 ```
 
-または
+or
 
 ```
 git clone git@github.com:ggjsap-2016-t3/main-game.git
 ```
 
-## ゲーム作る人
-public/以下にゲームに必要なファイル（main.jsやindex.htmlなど）が入っているので、それをブラウザで開いて開発を進めてください。
+## How to make the game
+Please open `public/main.js` or `public/index.html` by the browser and change files.
 
-## サーバー作る人
-PostgreSQL環境必須。
+## Requirements
+
+When you make the server,
+
+- PostgreSQL
+
+## How to open by the server
 
 ```
 bundle install
 cp config/config.yml.example config/config.yml
-# ↑を編集
+# change the above file
 shotgun
 open http://localhost:9393/
 ```

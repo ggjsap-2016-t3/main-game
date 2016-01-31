@@ -62,14 +62,18 @@ window.onload = function() {
         core.rootScene.addChild(map);
 
         var robo = new Robo(left, CELL_LENGTH, CELL_LENGTH, core, map);
+        var items = new Array();
+        var enemys = new Array();
 
-        var item1 = new Item(1, core, map, robo);
-        var item2 = new Item(2, core, map, robo);
-        var item3 = new Item(1, core, map, robo);
-        var item4 = new Item(2, core, map, robo);
-
-        var enemy1 = new Enemy(7, 2, core, map, robo);
-        var enemy2 = new Enemy(7, 2, core, map, robo);
+        for (i=0; i<2; i++){
+            items.push(new Item(1, core, map, robo));
+        }
+        for (i=0; i<2; i++){
+            items.push(new Item(2, core, map, robo));
+        }
+        for (i=0; i<2; i++){
+            enemys.push(new Enemy(7, 2, core, map, robo));
+        }
 
         rootSearch(map);
         var ui = new UI(core, robo);

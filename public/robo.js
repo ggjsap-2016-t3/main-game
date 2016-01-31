@@ -94,7 +94,7 @@ var Robo = Class.create({
                     window.location.href = './index.html';
                 });
 
-            if (this.left == 0) {
+            if (this.left <= 0) {
                 gameFinishScene.backgroundColor = 'black';
                 gameOverSprite.x = CELL_LENGTH*5.5;
                 gameOverSprite.y = CELL_LENGTH*6;

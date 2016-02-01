@@ -14,8 +14,21 @@ class RankingServer < Sinatra::Base
 		register Sinatra::Reloader
 	end
 
+  before do
+    ua = request.user_agent
+    if ["Android", "iPhone", "iPad", "iPod"].find {|s| ua.include?(s) }
+      @sp = true
+    else
+      @sp = false
+    end
+  end
+
 	get '/' do
-		File.read(File.join('public', 'index.html'))
+    if @sp
+      slim :sorry
+    else
+      File.read(File.join('public', 'index.html'))
+    end
 	end
 
   post '/', provides: :json do

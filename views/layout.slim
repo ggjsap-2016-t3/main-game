@@ -21,9 +21,10 @@ html[lang="en"]
             li
               a href=url("http://globalgamejam.org/2016/games/roque")
                 | Our GGJ Team Site
-            li
-              a href="/"
-                | Replay
+            - unless @sp
+              li
+                a href="/"
+                  | Replay
 
     .container
       a.twitter-share-button href="https://twitter.com/share" data-url="https://ggjsap2016-t3.herokuapp.com" data-text="I played Roque!! #ggjsap #ggj16" data-hashtags="ggjsap">Tweet</a>

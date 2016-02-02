@@ -71,7 +71,7 @@ class RankingServer < Sinatra::Base
     end
 
     @title = "Ranking"
-    @results = DB[:results].order(Sequel.desc(:left)).limit(10).all
+    @results = DB[:results].order(Sequel.desc(:left)).limit(100).all
     DB.disconnect
     slim :ranking
   end
